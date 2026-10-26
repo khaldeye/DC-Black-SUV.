@@ -197,12 +197,27 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
     });
   }
 
+  async function curated(){
+    try{
+      const r=await fetch("./curated-events.json?t="+Date.now(),{cache:"no-store"});
+      if(!r.ok) return [];
+      const j=await r.json();
+      return (j.events||[]).filter(e=>["conference","gala","airport"].includes(e.type));
+    }catch{return [];}
+  }
+  function mergeEvents(primary,extras){
+    const normalize=e=>[e.date,(e.name||"").toLowerCase().replace(/[^a-z0-9]/g,""),(e.address||"").toLowerCase().replace(/[^a-z0-9]/g,"")].join("|");
+    const map=new Map();
+    for(const e of [...extras,...primary])map.set(normalize(e),e);
+    return [...map.values()].sort((a,b)=>a.date.localeCompare(b.date)||String(a.time).localeCompare(String(b.time)));
+  }
   async function load(force=true){
     const url=cfg.dataUrl+(force?((cfg.dataUrl.includes("?")?"&":"?")+"t="+Date.now()):"");
     try{
       const r=await fetch(url,{cache:"no-store"});
       if(!r.ok) throw new Error("HTTP "+r.status);
       S.data=await r.json();
+      S.data.events=mergeEvents(S.data.events,await curated());
       render();
     }catch(err){
       $("weekMeta").textContent="Could not load the latest schedule.";
@@ -227,10 +242,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
       }
       const fresh=await window.searchLiveDMVEvents(key);
       const previous=(S.data?.events||[]).filter(e=>e.date>=todayISO());
-      const seen=new Set(fresh.events.map(e=>e.id).filter(Boolean));
-      const merged=[...fresh.events,...previous.filter(e=>!e.id||!seen.has(e.id))];
-      merged.sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
-      S.data={...fresh,events:merged};S.day=null;render();
+      S.data={...fresh,events:mergeEvents(fresh.events,mergeEvents(previous,await curated()))};S.day=null;render();
       $("weekMeta").textContent+=" • Live search completed on this device";
     }catch(err){
       $("weekMeta").textContent="Live search failed: "+err.message+" • Showing the published schedule. To change your key, use Reset key.";
