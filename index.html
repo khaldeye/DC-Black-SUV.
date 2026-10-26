@@ -60,7 +60,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   <div class="header">
     <div class="headerRow">
       <div class="headerTitle">DC Black/SUV</div>
-      <button id="refreshBtn" class="refresh">Refresh</button>
+      <div style="display:flex;align-items:center;gap:8px"><button id="resetKeyBtn" title="Change Ticketmaster API key" style="border:0;background:transparent;color:#555;font-size:12px;padding:8px">Reset key</button><button id="refreshBtn" class="refresh">Refresh</button></div>
     </div>
   </div>
 
@@ -98,7 +98,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};
   const order=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
   let S={data:null,day:null,premium:false,type:"all",mode:"events"};
-  const todayISO=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+  const todayISO=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date()).filter(x=>x.type!=="literal").map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`;};
 
   const $=id=>document.getElementById(id);
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
@@ -213,15 +213,27 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   $("airportsTab").onclick=()=>{S.mode="airports";S.day=null;render();};
   $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
   $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
+  $("resetKeyBtn").onclick=()=>{localStorage.removeItem("dc_suv_tm_key");$("weekMeta").textContent="API key cleared from this browser. Tap Refresh to enter a new key.";};
   $("refreshBtn").onclick=async()=>{
     const b=$("refreshBtn");b.disabled=true;b.textContent="Searching…";
     try{
-      const fresh=await window.searchLiveDMVEvents(cfg.ticketmasterPublicKey);
-      S.data=fresh;S.day=null;render();
-      $("weekMeta").textContent+=" • Live search completed (this device only)";
+      let key=cfg.ticketmasterPublicKey || localStorage.getItem("dc_suv_tm_key");
+      if(!key){
+        key=window.prompt("One-time setup: paste your Ticketmaster Consumer Key to search live events. It will be stored only in this browser, not on GitHub. Cancel to keep the published schedule.");
+        if(!key){$("weekMeta").textContent="Live search not configured. Showing published schedule.";return;}
+        key=key.trim();
+        if(!key){$("weekMeta").textContent="No key entered. Showing published schedule.";return;}
+        localStorage.setItem("dc_suv_tm_key",key);
+      }
+      const fresh=await window.searchLiveDMVEvents(key);
+      const previous=(S.data?.events||[]).filter(e=>e.date>=todayISO());
+      const seen=new Set(fresh.events.map(e=>e.id).filter(Boolean));
+      const merged=[...fresh.events,...previous.filter(e=>!e.id||!seen.has(e.id))];
+      merged.sort((a,b)=>a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
+      S.data={...fresh,events:merged};S.day=null;render();
+      $("weekMeta").textContent+=" • Live search completed on this device";
     }catch(err){
-      await load(true);
-      $("weekMeta").textContent="Live search unavailable: "+err.message+" • Showing last published schedule";
+      $("weekMeta").textContent="Live search failed: "+err.message+" • Showing the published schedule. To change your key, use Reset key.";
     }finally{b.disabled=false;b.textContent="Refresh";}
   };
 
