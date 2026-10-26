@@ -1,1 +1,1 @@
-window.APP_CONFIG = { dataUrl: "./events.json", refreshMinutes: 15 };
+window.APP_CONFIG = { dataUrl: "./events.json", ticketmasterPublicKey: "" };
