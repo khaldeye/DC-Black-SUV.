@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>DC Black/SUV Weekly</title>
+<style>
+:root{--bg:#0b1020;--card:#141a2d;--panel:#101629;--text:#f7f7fb;--muted:#aeb7cc;--border:#2b3550;--accent:#61a5ff;--accentbg:#162d4d;--good:#7dd3a7;}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:900px;margin:auto;padding:18px 14px 44px} header{display:flex;justify-content:space-between;gap:12px;align-items:end;flex-wrap:wrap}
+h1{font-size:22px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:4px}
+.status{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pill{border:1px solid var(--border);padding:7px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--good);margin-right:5px}
+.tabs{display:flex;gap:8px;overflow:auto;padding:14px 0 8px;scrollbar-width:none}
+button,select{font:inherit}.tab,.filter,.refresh{border:1px solid var(--border);background:transparent;color:var(--text);padding:11px 13px;border-radius:12px;min-height:44px;white-space:nowrap}
+.tab.active,.filter.active{border-color:var(--accent);background:var(--accentbg)}
+.refresh:disabled{opacity:.55}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+select{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 12px;min-height:44px}
+.summary{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0}.grid{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:15px}.top{display:flex;justify-content:space-between;gap:12px}
+.meta{color:var(--muted);font-size:12px}.name{font-weight:700;margin-top:5px;line-height:1.25}.row{font-size:14px;line-height:1.45;margin-top:8px}
+.row b{color:#fff}.rating{white-space:nowrap}.badge{display:inline-block;padding:5px 8px;border-radius:999px;background:var(--panel);color:var(--muted);font-size:12px;margin-top:9px}
+a.map{color:#8bc0ff;text-decoration:none}.empty,.error{border:1px dashed var(--border);padding:20px;border-radius:16px;color:var(--muted)}
+.error{border-color:#7f1d1d;color:#fecaca}.banner{margin:12px 0;padding:12px 14px;border:1px solid var(--border);background:var(--panel);border-radius:14px;font-size:13px;color:var(--muted)}
+footer{margin-top:20px;color:var(--muted);font-size:12px;line-height:1.5}
+@media (min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <h1>DC Black/SUV Weekly</h1>
+    <div id="weekLabel" class="sub">Loading latest weekly schedule…</div>
+  </div>
+  <div class="status">
+    <span class="pill"><span class="dot"></span><span id="feedState">Live feed ready</span></span>
+    <button id="refreshBtn" class="refresh" type="button">Refresh now</button>
+  </div>
+</header>
+
+<div id="updateBanner" class="banner">The app checks for a newer schedule when it opens and every 15 minutes while open.</div>
+
+<div id="tabs" class="tabs"></div>
+<div class="controls">
+  <button id="premium" class="filter" type="button">🔥 5-star only</button>
+  <select id="type" aria-label="Filter event type">
+    <option value="all">All event types</option>
+    <option value="conference">Conference</option>
+    <option value="gala">Gala / reception</option>
+    <option value="arena">Arena / concert</option>
+    <option value="airport">Airport / transport</option>
+  </select>
+</div>
+<div class="summary"><strong id="dayLabel"></strong><span id="count" class="sub"></span></div>
+<div id="list" class="grid"></div>
+
+<footer>
+  This app automatically reloads the schedule from its configured JSON feed. If the feed is updated on the server, the Home Screen app shows the new week without reinstalling.
+</footer>
+</div>
+
+<script src="config.js"></script>
+<script>
+(() => {
+  const cfg = window.APP_CONFIG || {dataUrl:"./events.json", refreshMinutes:15};
+  const dayOrder = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  let data = null, selectedDay = null, premiumOnly = false, type = "all", lastFetch = null;
+
+  const $ = id => document.getElementById(id);
+  const tabs = $("tabs"), list = $("list"), premiumBtn = $("premium"), typeSel = $("type"), refreshBtn = $("refreshBtn");
+
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  const mapsUrl = a => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(a || "");
+
+  function labelsFromEvents(events){
+    const byDay = {};
+    events.forEach(e => { if (!byDay[e.day] && e.date) byDay[e.day] = e.date; });
+    return dayOrder.filter(d=>byDay[d] || events.some(e=>e.day===d)).map(d => {
+      const dt = byDay[d] ? new Date(byDay[d] + "T12:00:00") : null;
+      const label = dt && !Number.isNaN(dt.valueOf())
+        ? dt.toLocaleDateString(undefined,{weekday:"short",month:"numeric",day:"numeric"})
+        : d;
+      return {key:d,label};
+    });
+  }
+
+  function selectTodayOrFirst(days){
+    const today = new Date().toLocaleDateString("en-US",{weekday:"short"});
+    return days.some(d=>d.key===today) ? today : (days[0]?.key || "Mon");
+  }
+
+  async function loadData(force=false){
+    refreshBtn.disabled = true;
+    $("feedState").textContent = "Checking…";
+    try{
+      const sep = cfg.dataUrl.includes("?") ? "&" : "?";
+      const url = cfg.dataUrl + (force ? sep + "t=" + Date.now() : "");
+      const res = await fetch(url, {cache:"no-store"});
+      if(!res.ok) throw new Error("Feed unavailable");
+      const incoming = await res.json();
+      if(!incoming || !Array.isArray(incoming.events)) throw new Error("Invalid feed");
+      data = incoming;
+      lastFetch = new Date();
+      const days = labelsFromEvents(data.events);
+      if(!selectedDay || !days.some(d=>d.key===selectedDay)) selectedDay = selectTodayOrFirst(days);
+      localStorage.setItem("dcBlackSuvCache", JSON.stringify(incoming));
+      localStorage.setItem("dcBlackSuvCacheTime", lastFetch.toISOString());
+      $("feedState").textContent = "Updated";
+      render();
+    }catch(err){
+      const cached = localStorage.getItem("dcBlackSuvCache");
+      if(cached){
+        try{
+          data = JSON.parse(cached);
+          const days = labelsFromEvents(data.events);
+          if(!selectedDay || !days.some(d=>d.key===selectedDay)) selectedDay = selectTodayOrFirst(days);
+          $("feedState").textContent = "Offline cache";
+          render();
+        }catch(_){}
+      } else {
+        $("feedState").textContent = "Feed unavailable";
+        list.innerHTML = '<div class="error">Could not load the weekly schedule.</div>';
+      }
+    } finally {
+      refreshBtn.disabled = false;
+    }
+  }
+
+  function render(){
+    if(!data) return;
+    $("weekLabel").textContent = `${data.week_label || "Current week"} • ${data.region || "Washington, DC area"}`;
+    const days = labelsFromEvents(data.events);
+    tabs.innerHTML = "";
+    days.forEach(d => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tab" + (d.key===selectedDay ? " active" : "");
+      b.textContent = d.label;
+      b.addEventListener("click",()=>{selectedDay=d.key;render()});
+      tabs.appendChild(b);
+    });
+
+    premiumBtn.className = "filter" + (premiumOnly ? " active" : "");
+    $("dayLabel").textContent = days.find(d=>d.key===selectedDay)?.label || selectedDay;
+
+    const rows = data.events.filter(e =>
+      e.day===selectedDay &&
+      (!premiumOnly || Number(e.rating)===5) &&
+      (type==="all" || e.type===type)
+    );
+    $("count").textContent = `${rows.length} ${rows.length===1?"opportunity":"opportunities"}`;
+    list.innerHTML = "";
+    if(!rows.length){
+      list.innerHTML = '<div class="empty">No events match these filters.</div>';
+      return;
+    }
+
+    rows.forEach(e => {
+      const el = document.createElement("article");
+      el.className = "card";
+      const stars = "🔥".repeat(Math.max(0,Math.min(5,Number(e.rating)||0)));
+      el.innerHTML = `
+        <div class="top">
+          <div>
+            <div class="meta">${esc(e.time)} • ${esc(e.type)}</div>
+            <div class="name">${esc(e.name)}</div>
+          </div>
+          <div class="rating" aria-label="${esc(e.rating)} out of 5">${stars}</div>
+        </div>
+        <div class="row"><b>Best pickup:</b> ${esc(e.pickup)}</div>
+        <div class="row"><b>Address:</b> <a class="map" target="_blank" rel="noopener" href="${mapsUrl(e.address)}">${esc(e.address)}</a></div>
+        <div class="row"><b>Passenger profile:</b> ${esc(e.profile)}</div>
+        <span class="badge">${esc(e.rating)}/5 premium potential</span>`;
+      list.appendChild(el);
+    });
+
+    const stamp = data.generated_at ? new Date(data.generated_at) : lastFetch;
+    $("updateBanner").textContent = stamp
+      ? `Schedule feed generated ${stamp.toLocaleString()}. The app checks again every ${cfg.refreshMinutes || 15} minutes while open.`
+      : `The app checks for a newer schedule every ${cfg.refreshMinutes || 15} minutes while open.`;
+  }
+
+  premiumBtn.addEventListener("click",()=>{premiumOnly=!premiumOnly;render()});
+  typeSel.addEventListener("change",()=>{type=typeSel.value;render()});
+  refreshBtn.addEventListener("click",()=>loadData(true));
+
+  loadData(true);
+  const ms = Math.max(5, Number(cfg.refreshMinutes)||15) * 60 * 1000;
+  setInterval(()=>loadData(true), ms);
+
+  if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
