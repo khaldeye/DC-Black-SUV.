@@ -1,1 +1,7 @@
-Uber-inspired redesign package. Replace the files in your GitHub Pages repo with these files, commit, wait 1–2 minutes, then refresh your site.
+Clean v3:
+- Full weekly events preserved
+- Only Events and Airports tabs
+- Removed Reminders and Promotions
+- Replaced online status with Refresh button
+- Removed bottom Home / Discover / Earnings / Inbox / Menu bar
+Upload these files to the root of your GitHub Pages repository and commit.

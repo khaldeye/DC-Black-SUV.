@@ -1,6 +1,225 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ffffff"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png"><title>DC Black/SUV Weekly</title><style>
-:root{--bg:#f4f4f4;--surface:#fff;--text:#111;--muted:#666;--line:#e7e7e7;--chip:#e9e9e9;--blue:#0A84FF;}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}.app{max-width:860px;margin:0 auto;padding-bottom:90px}.topbar{background:var(--blue);color:#fff;padding:18px 18px 20px;font-size:17px;font-weight:500;display:flex;justify-content:space-between;align-items:center}.page{padding:0 16px}.title{font-size:26px;font-weight:700;text-align:center;margin:18px 0 16px}.chips,.days{display:flex;gap:12px;overflow:auto;scrollbar-width:none}.chips{margin-bottom:18px}.chip{border:none;background:var(--chip);border-radius:999px;padding:14px 18px;font-size:16px;white-space:nowrap}.chip.active{background:#111;color:#fff}.days{justify-content:space-between;gap:14px;margin:8px 0 8px}.day{min-width:48px;text-align:center;padding:2px 0 12px;border:none;background:transparent;border-bottom:5px solid transparent}.day .dow{display:block;font-size:18px;color:#222;margin-bottom:8px}.day .num{display:block;font-size:22px;font-weight:700}.day.active{border-bottom-color:#111}.sectionHeader{background:#ededed;margin:8px -16px 0;padding:18px 16px 16px;font-size:24px;font-weight:700}.card{display:grid;grid-template-columns:1fr 150px;gap:18px;background:var(--surface);padding:18px 0 18px;border-bottom:1px solid var(--line)}.time{font-size:18px;color:var(--muted);margin-bottom:10px}.name{font-size:24px;line-height:1.15;font-weight:700;margin-bottom:10px}.place{font-size:22px;color:var(--muted);line-height:1.22;margin-bottom:12px}.tag{display:inline-block;background:#efefef;color:#666;border-radius:8px;padding:6px 12px;font-size:14px;font-weight:600}.saveRow{margin-top:18px}.saveBtn{border:none;background:#f1f1f1;border-radius:999px;padding:14px 22px;font-size:18px}.thumb{align-self:center;justify-self:end;width:140px;height:140px;background:#f5f5f5;position:relative;overflow:hidden;text-decoration:none}.thumb.map::before,.thumb.map::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, transparent 0 34%, #dbe7ef 34% 36%, transparent 36% 100%),linear-gradient(transparent 0 33%, #dbe7ef 33% 35%, transparent 35% 100%),linear-gradient(135deg, transparent 0 48%, #c3d6e5 48% 50%, transparent 50% 100%)}.thumb.map::after{width:18px;height:18px;border-radius:50%;background:var(--blue);top:56px;left:63px;inset:auto}.thumb.plane::before{content:"✈";position:absolute;font-size:110px;line-height:1;color:#2E6BFF;transform:rotate(-25deg);left:16px;top:12px}.metaNote{font-size:13px;color:var(--muted);margin:10px 0 8px}.filters{display:flex;gap:12px;margin:10px 0 18px;flex-wrap:wrap}.select{border:1.5px solid #d3d3d3;background:#fff;border-radius:22px;padding:13px 16px;font-size:17px}.footerBar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}.footerItem{font-size:14px;color:#666;text-align:center}.footerItem b{display:block;color:#111;margin-bottom:3px}.refresh{border:none;background:transparent;color:#fff;font-size:16px}@media (max-width:640px){.card{grid-template-columns:1fr 118px;gap:14px}.thumb{width:118px;height:118px}.name{font-size:21px}.place{font-size:19px}.title{font-size:24px}}
-</style></head><body><div class="app"><div class="topbar"><div>◦ &nbsp; You're online</div><button id="refreshBtn" class="refresh" type="button">↻</button></div><div class="page"><div class="title">Discover</div><div class="chips"><button class="chip">Reminders</button><button class="chip">Promotions</button><button class="chip active">Events</button><button class="chip">Airports</button></div><div class="days" id="days"></div><div class="filters"><button id="premiumBtn" class="select" type="button">🔥 5-star only</button><select id="typeSel" class="select" aria-label="All event types"><option value="all">All event types</option><option value="airport">Airports</option><option value="gala">Galas</option><option value="concert">Concerts</option><option value="sport">Sports</option><option value="expo">Expos</option></select></div><div class="metaNote" id="weekMeta">Loading latest schedule…</div><div id="content"></div></div></div><div class="footerBar"><div class="footerItem"><b>⌂</b>Home</div><div class="footerItem"><b>➤</b>Discover</div><div class="footerItem"><b>¤</b>Earnings</div><div class="footerItem"><b>✉</b>Inbox</div><div class="footerItem"><b>☰</b>Menu</div></div><script src="config.js"></script><script>
-(()=>{const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};const dayOrder=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];let state={data:null,day:null,premium:false,type:"all"};const daysEl=document.getElementById("days"),contentEl=document.getElementById("content"),weekMeta=document.getElementById("weekMeta"),premiumBtn=document.getElementById("premiumBtn"),typeSel=document.getElementById("typeSel");const mapsUrl=a=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a||"");const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));function labelForDate(iso){const d=new Date(iso+"T12:00:00");return{dow:d.toLocaleDateString(undefined,{weekday:"short"}).slice(0,1),num:d.getDate()}}function groupedDays(events){const seen=new Map();events.forEach(e=>{if(!seen.has(e.day))seen.set(e.day,e.date)});return dayOrder.filter(d=>seen.has(d)).map(d=>({day:d,date:seen.get(d),...labelForDate(seen.get(d))}))}function sectionTitle(date){const d=new Date(date+"T12:00:00");return d.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"})}function renderDays(){const days=groupedDays(state.data.events);if(!state.day)state.day=days[0]?.day;daysEl.innerHTML="";days.forEach(item=>{const btn=document.createElement("button");btn.type="button";btn.className="day"+(state.day===item.day?" active":"");btn.innerHTML=`<span class="dow">${item.dow}</span><span class="num">${item.num}</span>`;btn.addEventListener("click",()=>{state.day=item.day;render()});daysEl.appendChild(btn)})}function thumbClass(type){return type==="airport"?"plane":"map"}function render(){if(!state.data)return;renderDays();premiumBtn.style.borderColor=state.premium?"#111":"#d3d3d3";premiumBtn.style.background=state.premium?"#111":"#fff";premiumBtn.style.color=state.premium?"#fff":"#111";weekMeta.textContent=`${state.data.week_label} • Updated automatically • ${state.data.region}`;const rows=state.data.events.filter(e=>e.day===state.day&&(!state.premium||Number(e.rating)===5)&&(state.type==="all"||e.type===state.type));const dayDate=groupedDays(state.data.events).find(d=>d.day===state.day)?.date;contentEl.innerHTML="";const header=document.createElement("div");header.className="sectionHeader";header.textContent=sectionTitle(dayDate);contentEl.appendChild(header);if(!rows.length){const empty=document.createElement("div");empty.className="card";empty.style.display="block";empty.innerHTML=`<div class="name">No matching events</div><div class="place">Try another day or remove a filter.</div>`;contentEl.appendChild(empty);return}rows.forEach(e=>{const card=document.createElement("div");card.className="card";card.innerHTML=`<div><div class="time">${esc(e.time)}</div><div class="name">${esc(e.name)}</div><div class="place">${esc(e.address)}</div>${e.tag?`<div class="tag">${esc(e.tag)}</div>`:""}<div class="saveRow"><button class="saveBtn" type="button">🔖&nbsp; Save</button></div></div><a href="${mapsUrl(e.address)}" target="_blank" rel="noopener" class="thumb ${thumbClass(e.type)}" aria-label="Open map"></a>`;contentEl.appendChild(card)})}async function loadData(force=false){const url=cfg.dataUrl+(force?((cfg.dataUrl.includes("?")?"&":"?")+"t="+Date.now()):"");try{const res=await fetch(url,{cache:"no-store"});const data=await res.json();state.data=data;if(!state.day)state.day=groupedDays(data.events)[0]?.day;render()}catch(err){weekMeta.textContent="Could not load the latest schedule."}}premiumBtn.addEventListener("click",()=>{state.premium=!state.premium;render()});typeSel.addEventListener("change",()=>{state.type=typeSel.value;render()});document.getElementById("refreshBtn").addEventListener("click",()=>loadData(true));loadData(true);setInterval(()=>loadData(true),Math.max(5,Number(cfg.refreshMinutes)||15)*60*1000);if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("./sw.js").catch(()=>{})})();
-</script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>DC Black/SUV Weekly</title>
+<style>
+:root{--bg:#f4f4f4;--surface:#fff;--text:#111;--muted:#686868;--line:#e7e7e7;--chip:#e9e9e9;--blue:#0A84FF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.app{max-width:900px;margin:auto}
+.header{background:#fff;padding:18px 16px 10px;border-bottom:1px solid var(--line)}
+.headerRow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.headerTitle{font-size:25px;font-weight:700}
+.refresh{border:0;background:#111;color:#fff;border-radius:999px;padding:11px 18px;font-size:16px;font-weight:600}
+.page{padding:0 16px 30px}
+.title{text-align:center;font-size:26px;font-weight:700;margin:18px 0}
+.tabs{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
+.tab{border:0;background:#e8e8e8;color:#1674e8;padding:14px 30px;border-radius:999px;font-size:18px}
+.tab.active{background:#111;color:#fff}
+.days{display:flex;justify-content:space-between;gap:10px;overflow:auto;border-bottom:1px solid #cfcfcf}
+.day{min-width:48px;border:0;background:transparent;padding:8px 0 12px;border-bottom:5px solid transparent}
+.day.active{border-bottom-color:#111}
+.dow{display:block;font-size:18px;margin-bottom:8px}.num{display:block;font-size:23px;font-weight:700;color:#2f7df2}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 14px}
+.filter,.select{border:1.5px solid #d1d1d1;background:#fff;border-radius:24px;padding:13px 16px;font-size:17px}
+.filter.active{background:#111;color:#fff;border-color:#111}
+.meta{color:var(--muted);font-size:13px;line-height:1.4;margin-bottom:12px}
+.section{background:#ececec;margin:0 -16px;padding:18px 16px;font-size:24px;font-weight:700}
+.card{display:grid;grid-template-columns:1fr 130px;gap:16px;background:#fff;border-bottom:1px solid var(--line);padding:18px 0}
+.time{font-size:18px;color:var(--muted);margin-bottom:10px}
+.name{font-size:23px;font-weight:700;line-height:1.15;margin-bottom:10px}
+.place{font-size:20px;color:var(--muted);line-height:1.25}
+.tag{display:inline-block;margin-top:12px;background:#f0f0f0;color:#666;border-radius:8px;padding:6px 12px;font-size:14px}
+.pickup{font-size:15px;margin-top:11px;color:#222}
+.save{margin-top:16px;border:0;background:#f1f1f1;border-radius:999px;padding:12px 18px;font-size:17px}
+.thumb{width:120px;height:120px;background:#f3f5f7;align-self:center;justify-self:end;position:relative;text-decoration:none;overflow:hidden}
+.thumb.map:before{content:"";position:absolute;inset:0;background:
+linear-gradient(90deg,transparent 0 28%,#dce7ee 28% 31%,transparent 31% 72%,#dce7ee 72% 75%,transparent 75%),
+linear-gradient(0deg,transparent 0 34%,#dce7ee 34% 37%,transparent 37% 66%,#dce7ee 66% 69%,transparent 69%),
+linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
+.thumb.map:after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--blue);left:51px;top:49px}
+.thumb.plane:before{content:"✈";position:absolute;font-size:92px;color:#2f68ff;left:12px;top:10px;transform:rotate(-24deg)}
+.empty{background:#fff;padding:25px 0;color:var(--muted)}
+@media(max-width:620px){
+  .card{grid-template-columns:1fr 105px}
+  .thumb{width:105px;height:105px}
+  .name{font-size:21px}
+  .place{font-size:18px}
+  .tab{padding:13px 26px}
+  .headerTitle{font-size:22px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div class="headerRow">
+      <div class="headerTitle">DC Black/SUV</div>
+      <button id="refreshBtn" class="refresh">Refresh</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="title">Discover</div>
+
+    <div class="tabs">
+      <button id="eventsTab" class="tab active">Events</button>
+      <button id="airportsTab" class="tab">Airports</button>
+    </div>
+
+    <div id="days" class="days"></div>
+
+    <div class="filters">
+      <button id="premiumBtn" class="filter">🔥 5-star only</button>
+      <select id="typeSel" class="select">
+        <option value="all">All event types</option>
+        <option value="conference">Conferences</option>
+        <option value="gala">Galas / receptions</option>
+        <option value="concert">Concerts</option>
+        <option value="sport">Sports</option>
+        <option value="expo">Expos / festivals</option>
+      </select>
+    </div>
+
+    <div id="weekMeta" class="meta">Loading…</div>
+    <div id="content"></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+(() => {
+  const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};
+  const order=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  let S={data:null,day:null,premium:false,type:"all",mode:"events"};
+
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  const maps=a=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a||"");
+
+  function groupDays(events){
+    const m=new Map();
+    events.forEach(e=>{ if(!m.has(e.day)) m.set(e.day,e.date); });
+    return order.filter(d=>m.has(d)).map(day=>({day,date:m.get(day)}));
+  }
+
+  function dayLabel(iso){
+    const d=new Date(iso+"T12:00:00");
+    return {
+      letter:d.toLocaleDateString(undefined,{weekday:"short"}).slice(0,1),
+      num:d.getDate(),
+      full:d.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"})
+    };
+  }
+
+  function available(){
+    if(!S.data) return [];
+    return S.data.events.filter(e=>S.mode==="airports" ? e.type==="airport" : e.type!=="airport");
+  }
+
+  function renderDays(){
+    const ds=groupDays(available());
+    if(!S.day || !ds.some(x=>x.day===S.day)) S.day=ds[0]?.day || null;
+    $("days").innerHTML="";
+    ds.forEach(x=>{
+      const l=dayLabel(x.date);
+      const b=document.createElement("button");
+      b.className="day"+(S.day===x.day?" active":"");
+      b.innerHTML=`<span class="dow">${l.letter}</span><span class="num">${l.num}</span>`;
+      b.onclick=()=>{S.day=x.day;render();};
+      $("days").appendChild(b);
+    });
+  }
+
+  function render(){
+    if(!S.data) return;
+
+    $("eventsTab").className="tab"+(S.mode==="events"?" active":"");
+    $("airportsTab").className="tab"+(S.mode==="airports"?" active":"");
+    $("typeSel").style.display=S.mode==="airports"?"none":"inline-block";
+    $("premiumBtn").className="filter"+(S.premium?" active":"");
+
+    renderDays();
+
+    $("weekMeta").textContent=`${S.data.week_label} • Updated automatically • ${S.data.region}`;
+
+    const base=available();
+    const rows=base.filter(e =>
+      e.day===S.day &&
+      (!S.premium || Number(e.rating)===5) &&
+      (S.mode==="airports" || S.type==="all" || e.type===S.type)
+    );
+
+    const date=groupDays(base).find(x=>x.day===S.day)?.date;
+    $("content").innerHTML="";
+
+    if(!date){
+      $("content").innerHTML='<div class="empty">No opportunities available.</div>';
+      return;
+    }
+
+    const sec=document.createElement("div");
+    sec.className="section";
+    sec.textContent=dayLabel(date).full;
+    $("content").appendChild(sec);
+
+    if(!rows.length){
+      const e=document.createElement("div");
+      e.className="empty";
+      e.textContent="No matching opportunities for this day.";
+      $("content").appendChild(e);
+      return;
+    }
+
+    rows.forEach(e=>{
+      const c=document.createElement("div");
+      c.className="card";
+      c.innerHTML=`
+        <div>
+          <div class="time">${esc(e.time)}</div>
+          <div class="name">${esc(e.name)}</div>
+          <div class="place">${esc(e.address)}</div>
+          <div class="tag">${esc(e.tag||e.type)}</div>
+          <div class="pickup"><b>Best pickup:</b> ${esc(e.pickup)}</div>
+          <button class="save">🔖 Save</button>
+        </div>
+        <a class="thumb ${e.type==="airport"?"plane":"map"}"
+           href="${maps(e.address)}" target="_blank" rel="noopener"
+           aria-label="Open map"></a>`;
+      $("content").appendChild(c);
+    });
+  }
+
+  async function load(force=true){
+    const url=cfg.dataUrl+(force?((cfg.dataUrl.includes("?")?"&":"?")+"t="+Date.now()):"");
+    try{
+      const r=await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      S.data=await r.json();
+      render();
+    }catch(err){
+      $("weekMeta").textContent="Could not load the latest schedule.";
+    }
+  }
+
+  $("eventsTab").onclick=()=>{S.mode="events";S.day=null;render();};
+  $("airportsTab").onclick=()=>{S.mode="airports";S.day=null;render();};
+  $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
+  $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
+  $("refreshBtn").onclick=()=>load(true);
+
+  load(true);
+  setInterval(()=>load(true),Math.max(5,Number(cfg.refreshMinutes)||15)*60*1000);
+
+  if("serviceWorker"in navigator&&location.protocol.startsWith("http")){
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
