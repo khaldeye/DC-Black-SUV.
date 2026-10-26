@@ -1,5 +1,9 @@
 name: Update DMV events
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-events.yml'
   schedule:
     - cron: '15 12 * * 1'
   workflow_dispatch:
