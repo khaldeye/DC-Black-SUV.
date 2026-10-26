@@ -60,7 +60,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   <div class="header">
     <div class="headerRow">
       <div class="headerTitle">DC Black/SUV</div>
-      <div style="display:flex;align-items:center;gap:8px"><button id="resetKeyBtn" title="Change Ticketmaster API key" style="border:0;background:transparent;color:#555;font-size:12px;padding:8px">Reset key</button><button id="refreshBtn" class="refresh">Refresh</button></div>
+      <div style="display:flex;align-items:center;gap:8px"><button id="refreshBtn" class="refresh">Refresh</button></div>
     </div>
   </div>
 
@@ -92,7 +92,6 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 </div>
 
 <script src="config.js"></script>
-<script src="live-refresh.js"></script>
 <script>
 (() => {
   const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};
@@ -197,27 +196,12 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
     });
   }
 
-  async function curated(){
-    try{
-      const r=await fetch("./curated-events.json?t="+Date.now(),{cache:"no-store"});
-      if(!r.ok) return [];
-      const j=await r.json();
-      return (j.events||[]).filter(e=>["conference","gala","airport"].includes(e.type));
-    }catch{return [];}
-  }
-  function mergeEvents(primary,extras){
-    const normalize=e=>[e.date,(e.name||"").toLowerCase().replace(/[^a-z0-9]/g,""),(e.address||"").toLowerCase().replace(/[^a-z0-9]/g,"")].join("|");
-    const map=new Map();
-    for(const e of [...extras,...primary])map.set(normalize(e),e);
-    return [...map.values()].sort((a,b)=>a.date.localeCompare(b.date)||String(a.time).localeCompare(String(b.time)));
-  }
   async function load(force=true){
     const url=cfg.dataUrl+(force?((cfg.dataUrl.includes("?")?"&":"?")+"t="+Date.now()):"");
     try{
       const r=await fetch(url,{cache:"no-store"});
       if(!r.ok) throw new Error("HTTP "+r.status);
       S.data=await r.json();
-      S.data.events=mergeEvents(S.data.events,await curated());
       render();
     }catch(err){
       $("weekMeta").textContent="Could not load the latest schedule.";
@@ -228,25 +212,10 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   $("airportsTab").onclick=()=>{S.mode="airports";S.day=null;render();};
   $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
   $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
-  $("resetKeyBtn").onclick=()=>{localStorage.removeItem("dc_suv_tm_key");$("weekMeta").textContent="API key cleared from this browser. Tap Refresh to enter a new key.";};
   $("refreshBtn").onclick=async()=>{
-    const b=$("refreshBtn");b.disabled=true;b.textContent="Searching…";
-    try{
-      let key=cfg.ticketmasterPublicKey || localStorage.getItem("dc_suv_tm_key");
-      if(!key){
-        key=window.prompt("One-time setup: paste your Ticketmaster Consumer Key to search live events. It will be stored only in this browser, not on GitHub. Cancel to keep the published schedule.");
-        if(!key){$("weekMeta").textContent="Live search not configured. Showing published schedule.";return;}
-        key=key.trim();
-        if(!key){$("weekMeta").textContent="No key entered. Showing published schedule.";return;}
-        localStorage.setItem("dc_suv_tm_key",key);
-      }
-      const fresh=await window.searchLiveDMVEvents(key);
-      const previous=(S.data?.events||[]).filter(e=>e.date>=todayISO());
-      S.data={...fresh,events:mergeEvents(fresh.events,mergeEvents(previous,await curated()))};S.day=null;render();
-      $("weekMeta").textContent+=" • Live search completed on this device";
-    }catch(err){
-      $("weekMeta").textContent="Live search failed: "+err.message+" • Showing the published schedule. To change your key, use Reset key.";
-    }finally{b.disabled=false;b.textContent="Refresh";}
+    const b=$("refreshBtn");b.disabled=true;b.textContent="Refreshing…";
+    await load(true);
+    b.disabled=false;b.textContent="Refresh";
   };
 
   load(true);
