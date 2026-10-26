@@ -92,11 +92,13 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 </div>
 
 <script src="config.js"></script>
+<script src="live-refresh.js"></script>
 <script>
 (() => {
   const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};
   const order=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
   let S={data:null,day:null,premium:false,type:"all",mode:"events"};
+  const todayISO=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
 
   const $=id=>document.getElementById(id);
   const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
@@ -119,7 +121,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
   function available(){
     if(!S.data) return [];
-    return S.data.events.filter(e=>S.mode==="airports" ? e.type==="airport" : e.type!=="airport");
+    return S.data.events.filter(e=>e.date>=todayISO() && !["cancelled","canceled"].includes((e.status||"").toLowerCase()) && (S.mode==="airports" ? e.type==="airport" : e.type!=="airport"));
   }
 
   function renderDays(){
@@ -146,7 +148,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
     renderDays();
 
-    $("weekMeta").textContent=`${S.data.week_label} • Updated automatically • ${S.data.region}`;
+    $("weekMeta").textContent=`${S.data.week_label} • Last searched: ${S.data.generated_at ? new Date(S.data.generated_at).toLocaleString() : "unknown"} • ${S.data.region}`;
 
     const base=available();
     const rows=base.filter(e =>
@@ -184,7 +186,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
           <div class="time">${esc(e.time)}</div>
           <div class="name">${esc(e.name)}</div>
           <div class="place">${esc(e.address)}</div>
-          <div class="tag">${esc(e.tag||e.type)}</div>
+          <div class="tag">${esc(e.tag||e.type)}${e.status && e.status!=="onsale" ? " • "+esc(e.status) : ""}</div>
           <div class="pickup"><b>Best pickup:</b> ${esc(e.pickup)}</div>
           <button class="save">🔖 Save</button>
         </div>
@@ -211,10 +213,20 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   $("airportsTab").onclick=()=>{S.mode="airports";S.day=null;render();};
   $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
   $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
-  $("refreshBtn").onclick=()=>load(true);
+  $("refreshBtn").onclick=async()=>{
+    const b=$("refreshBtn");b.disabled=true;b.textContent="Searching…";
+    try{
+      const fresh=await window.searchLiveDMVEvents(cfg.ticketmasterPublicKey);
+      S.data=fresh;S.day=null;render();
+      $("weekMeta").textContent+=" • Live search completed (this device only)";
+    }catch(err){
+      await load(true);
+      $("weekMeta").textContent="Live search unavailable: "+err.message+" • Showing last published schedule";
+    }finally{b.disabled=false;b.textContent="Refresh";}
+  };
 
   load(true);
-  setInterval(()=>load(true),Math.max(5,Number(cfg.refreshMinutes)||15)*60*1000);
+  // Weekly updates are published by GitHub Actions; no fake 15-minute search.
 
   if("serviceWorker"in navigator&&location.protocol.startsWith("http")){
     navigator.serviceWorker.register("./sw.js").catch(()=>{});
