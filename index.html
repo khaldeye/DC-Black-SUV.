@@ -120,12 +120,12 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
   function available(){
     if(!S.data) return [];
-    return S.data.events.filter(e=>e.date>=todayISO() && !["cancelled","canceled"].includes((e.status||"").toLowerCase()) && (S.mode==="airports" ? e.type==="airport" : e.type!=="airport"));
+    return S.data.events.filter(e=>!["cancelled","canceled"].includes((e.status||"").toLowerCase()) && (S.mode==="airports" ? e.type==="airport" : e.type!=="airport"));
   }
 
   function renderDays(){
     const ds=groupDays(available());
-    if(!S.day || !ds.some(x=>x.day===S.day)) S.day=ds[0]?.day || null;
+    if(!S.day || !ds.some(x=>x.day===S.day)) S.day=ds.find(x=>x.date===todayISO())?.day || ds[0]?.day || null;
     $("days").innerHTML="";
     ds.forEach(x=>{
       const l=dayLabel(x.date);
