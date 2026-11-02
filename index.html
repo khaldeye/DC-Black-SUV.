@@ -197,14 +197,30 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   }
 
   async function load(force=true){
-    const url=cfg.dataUrl+(force?((cfg.dataUrl.includes("?")?"&":"?")+"t="+Date.now()):"");
+    // Read published data from GitHub main first; Pages and installed PWA caches may lag.
+    const urls=[
+      "https://raw.githubusercontent.com/khaldeye/DC-Black-SUV./main/events.json",
+      cfg.dataUrl
+    ];
     try{
-      const r=await fetch(url,{cache:"no-store"});
-      if(!r.ok) throw new Error("HTTP "+r.status);
-      S.data=await r.json();
+      let data=null;
+      for(const base of urls){
+        try{
+          const url=base+(base.includes("?")?"&":"?")+"v="+Date.now();
+          const response=await fetch(url,{cache:"no-store"});
+          if(!response.ok) throw new Error("HTTP "+response.status);
+          const candidate=await response.json();
+          if(!candidate||!Array.isArray(candidate.events)) throw new Error("Invalid schedule");
+          data=candidate;
+          break;
+        }catch(error){console.warn("Schedule source unavailable",base,error);}
+      }
+      if(!data) throw new Error("No schedule source available");
+      S.data=data;
+      S.day=null;
       render();
     }catch(err){
-      $("weekMeta").textContent="Could not load the latest schedule.";
+      $("weekMeta").textContent="Could not load the latest schedule. Check connection and try Refresh.";
     }
   }
 
