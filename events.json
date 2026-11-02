@@ -1,8 +1,8 @@
 {
   "week_label": "Nov 2 – Nov 8, 2026",
-  "generated_at": "2026-11-02T02:01:15.932Z",
+  "generated_at": "2026-11-01T21:50:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
-  "note": "Official organizer and venue schedules used where available. Some entries have unverified venue/program hours, explicitly marked. Pickup windows and ratings are estimates, not live Uber demand.",
+  "note": "Expanded calendar leads. Entries labeled verify require confirmation of dates, times, venue and status before staging. Ratings and pickup windows are estimates.",
   "events": [
     {
       "day": "Mon",
@@ -83,6 +83,32 @@
       "source": "https://startdmv.org/events"
     },
     {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "Check organizer schedule (not verified)",
+      "name": "IIA IGNITE Emerging Leaders Conference",
+      "address": "Grand Hyatt Washington, 1000 H St NW, Washington, DC 20001",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.theiia.org/"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "Check organizer schedule (not verified)",
+      "name": "AFCC Global Biobased Economy Conference",
+      "address": "Gaylord National Resort, 201 Waterfront St, National Harbor, MD 20745",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.altfuelchem.org/"
+    },
+    {
       "day": "Tue",
       "date": "2026-11-03",
       "time": "Daytime; check organizer agenda",
@@ -94,6 +120,45 @@
       "profile": "Cybersecurity executives and business travelers",
       "tag": "Executive",
       "source": "https://nexusconnect.io/nexus-conference"
+    },
+    {
+      "day": "Tue",
+      "date": "2026-11-03",
+      "time": "Check organizer schedule (not verified)",
+      "name": "IIA IGNITE Conference — closing day",
+      "address": "Grand Hyatt Washington, 1000 H St NW, Washington, DC 20001",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.theiia.org/"
+    },
+    {
+      "day": "Tue",
+      "date": "2026-11-03",
+      "time": "Check organizer schedule (not verified)",
+      "name": "AFCC Global Biobased Economy Conference — closing day",
+      "address": "Gaylord National Resort, 201 Waterfront St, National Harbor, MD 20745",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.altfuelchem.org/"
+    },
+    {
+      "day": "Tue",
+      "date": "2026-11-03",
+      "time": "Check organizer schedule (not verified)",
+      "name": "Washington Capitals vs Dallas Stars",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "sport",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.capitalonearena.com/events"
     },
     {
       "day": "Wed",
@@ -120,6 +185,19 @@
       "profile": "Medical and scientific conference delegates",
       "tag": "Conference",
       "source": "https://www.geron.org/news-events/calendar-of-events"
+    },
+    {
+      "day": "Wed",
+      "date": "2026-11-04",
+      "time": "Check organizer schedule (not verified)",
+      "name": "Washington Wizards vs Atlanta Hawks",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "sport",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.capitalonearena.com/events"
     },
     {
       "day": "Thu",
@@ -174,6 +252,19 @@
       "source": "https://events.americanbar.org/event/430839e5-3128-4939-83fe-afbd259d2987/agenda"
     },
     {
+      "day": "Thu",
+      "date": "2026-11-05",
+      "time": "Check organizer schedule (not verified)",
+      "name": "George Washington Symposium — black-tie gala",
+      "address": "George Washington Masonic National Memorial, Alexandria, VA",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "gala",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.mountvernon.org/"
+    },
+    {
       "day": "Fri",
       "date": "2026-11-06",
       "time": "6:30 PM gala start",
@@ -211,6 +302,19 @@
       "profile": "Concertgoers; premium SUV demand uncertain",
       "tag": "Concert",
       "source": "https://theanthemdc.com/"
+    },
+    {
+      "day": "Fri",
+      "date": "2026-11-06",
+      "time": "Check organizer schedule (not verified)",
+      "name": "Austrian Embassy Viennese Ball",
+      "address": "Embassy of Austria, Washington, DC",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "gala",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.internationalclubdc.com/"
     },
     {
       "day": "Sat",
@@ -252,6 +356,32 @@
       "source": "https://events.americanbar.org/event/430839e5-3128-4939-83fe-afbd259d2987/agenda"
     },
     {
+      "day": "Sat",
+      "date": "2026-11-07",
+      "time": "Check organizer schedule (not verified)",
+      "name": "Washington Capitals vs Florida Panthers",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "sport",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-07",
+      "time": "Check organizer schedule (not verified)",
+      "name": "Georgetown vs Maryland basketball",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "sport",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
       "day": "Sun",
       "date": "2026-11-08",
       "time": "5 PM VIP reception; 7 PM screening",
@@ -276,6 +406,32 @@
       "profile": "Return travel; no confirmed surge",
       "tag": "Airport watch",
       "source": "https://www.flyreagan.com/"
+    },
+    {
+      "day": "Sun",
+      "date": "2026-11-08",
+      "time": "Check organizer schedule (not verified)",
+      "name": "UVA vs Arkansas basketball",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "sport",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
+      "day": "Sun",
+      "date": "2026-11-08",
+      "time": "Check organizer schedule (not verified)",
+      "name": "JFNA General Assembly — conference arrivals",
+      "address": "Washington, DC (venue unverified)",
+      "pickup": "Estimated demand; confirm event end time",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Potential executive or premium transportation; demand not measured",
+      "tag": "Calendar lead — verify",
+      "source": "https://www.jewishfederations.org/"
     }
   ]
 }
