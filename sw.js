@@ -1,4 +1,4 @@
-const CACHE='dc-black-suv-live-v6';
+const CACHE='dc-black-suv-live-v7';
 const SHELL=['./','./index.html','./config.js','./live-refresh.js','./manifest.webmanifest','./icon-180.png','./icon-512.png'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)))});
 self.addEventListener('activate',e=>e.waitUntil(Promise.all([self.clients.claim(),caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))])));
