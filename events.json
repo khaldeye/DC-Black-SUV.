@@ -1,8 +1,8 @@
 {
   "week_label": "Nov 2 – Nov 8, 2026",
-  "generated_at": "2026-11-01T21:00:00-05:00",
+  "generated_at": "2026-11-02T02:01:15.932Z",
   "region": "Washington, DC • Maryland • Northern Virginia",
-  "note": "Curated candidate events from organizer listings; check linked official schedules for changes or cancellations. All pickup windows and demand ratings are estimates, not live Uber surge data.",
+  "note": "Official organizer and venue schedules used where available. Some entries have unverified venue/program hours, explicitly marked. Pickup windows and ratings are estimates, not live Uber demand.",
   "events": [
     {
       "day": "Mon",
@@ -16,6 +16,71 @@
       "profile": "Business travel; flight volume and surge unverified",
       "tag": "Airport watch",
       "source": "https://www.flyreagan.com/"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "5:30–6:30 PM lounge; 6:30–8 PM dinner",
+      "name": "Littler Future of Work Summit — executive reception",
+      "address": "Park Hyatt Washington, 1201 24th St NW, Washington, DC 20037",
+      "pickup": "7:45–9 PM (estimated)",
+      "rating": 5,
+      "type": "conference",
+      "profile": "General counsel, C-suite and senior HR executives",
+      "tag": "Executive / VIP",
+      "source": "https://www.littler.com/events/2026-future-work-summit"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "Nov 2–4; daily program hours not verified",
+      "name": "27th Annual Pharmaceutical and Medical Device Ethics & Compliance Congress",
+      "address": "Washington Hilton, 1919 Connecticut Ave NW, Washington, DC 20009",
+      "pickup": "4:30–6:30 PM (estimated; verify agenda)",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Pharma compliance executives, legal and regulatory professionals",
+      "tag": "Conference",
+      "source": "https://www.thenormandydc.com/conferences"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "1:30–5 PM",
+      "name": "Dell Technologies Federal Reseller Summit",
+      "address": "Carahsoft Collaboration & Conference Center, 11493 Sunset Hills Rd, Reston, VA",
+      "pickup": "4:30–5:45 PM (estimated)",
+      "rating": 4,
+      "type": "conference",
+      "profile": "Federal IT vendors, reseller executives and sales leadership",
+      "tag": "Business conference",
+      "source": "https://gtedge.ai/events/list/?tribe-bar-date=2026-04-10"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "6:30 PM start",
+      "name": "Georgetown vs Loyola Maryland — basketball",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "8:30–9:30 PM (estimated)",
+      "rating": 3,
+      "type": "sport",
+      "profile": "Premium seating and alumni guests; lower Black SUV conversion",
+      "tag": "Sports",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-02",
+      "time": "5:30–7:30 PM",
+      "name": "Kaiser Permanente & Halcyon Health Innovation Spotlight",
+      "address": "Washington, DC — confirm exact venue with organizer",
+      "pickup": "7:15–8:15 PM (estimated; location unverified)",
+      "rating": 3,
+      "type": "conference",
+      "profile": "Health investors, startup founders and healthcare leaders",
+      "tag": "Networking",
+      "source": "https://startdmv.org/events"
     },
     {
       "day": "Tue",
