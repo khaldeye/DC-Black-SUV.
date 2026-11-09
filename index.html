@@ -76,6 +76,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
     <div class="filters">
       <button id="premiumBtn" class="filter">🔥 5-star only</button>
+      <button id="sportsBtn" class="filter">🏟 Sports</button>
       <select id="typeSel" class="select">
         <option value="all">All event types</option>
         <option value="conference">Conferences</option>
@@ -87,6 +88,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
     </div>
 
     <div id="weekMeta" class="meta">Loading…</div>
+    <div id="dataStatus" class="meta" role="status" aria-live="polite">Checking this week’s events…</div>
     <div id="content"></div>
   </div>
 </div>
@@ -144,17 +146,22 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
     $("eventsTab").className="tab"+(S.mode==="events"?" active":"");
     $("airportsTab").className="tab"+(S.mode==="airports"?" active":"");
     $("typeSel").style.display=S.mode==="airports"?"none":"inline-block";
+    $("sportsBtn").style.display=S.mode==="airports"?"none":"inline-block";
     $("premiumBtn").className="filter"+(S.premium?" active":"");
+    $("sportsBtn").className="filter"+(S.type==="sport"?" active":"");
 
     renderDays();
 
     $("weekMeta").textContent=`${S.data.week_label} • Last searched: ${S.data.generated_at ? new Date(S.data.generated_at).toLocaleString() : "unknown"} • ${S.data.region}`;
 
     const base=available();
+    const sportCount=base.filter(e=>["sport","sports"].includes(String(e.type||"").toLowerCase())).length;
+    $("sportsBtn").textContent=`🏟 Sports (${sportCount})`;
+    $("dataStatus").textContent=`Loaded ${base.length} events • ${sportCount} sports • ${S.data.week_label}`;
     const rows=base.filter(e =>
       (S.day==="all" || e.day===S.day) &&
       (!S.premium || Number(e.rating)===5) &&
-      (S.mode==="airports" || S.type==="all" || e.type===S.type)
+      (S.mode==="airports" || S.type==="all" || (S.type==="sport" ? ["sport","sports"].includes(String(e.type||"").toLowerCase()) : e.type===S.type))
     );
 
     const date=groupDays(base).find(x=>x.day===S.day)?.date;
@@ -222,13 +229,15 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
       render();
     }catch(err){
       $("weekMeta").textContent="Could not load the latest schedule. Check connection and try Refresh.";
+      $("dataStatus").textContent="Schedule loading failed — no live event count available.";
     }
   }
 
   $("eventsTab").onclick=()=>{S.mode="events";S.day="all";render();};
   $("airportsTab").onclick=()=>{S.mode="airports";S.day="all";render();};
   $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
-  $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
+  $("typeSel").onchange=()=>{S.type=$("typeSel").value;S.day="all";render();};
+  $("sportsBtn").onclick=()=>{S.mode="events";S.type=S.type==="sport"?"all":"sport";S.day="all";S.premium=false;$("typeSel").value=S.type;render();};
   $("refreshBtn").onclick=async()=>{
     const b=$("refreshBtn");b.disabled=true;b.textContent="Refreshing…";
     await load(true);
