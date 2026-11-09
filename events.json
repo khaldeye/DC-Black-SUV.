@@ -1,9 +1,9 @@
 {
   "week_label": "Nov 9 – Nov 15, 2026",
-  "generated_at": "2026-11-09T13:05:00-05:00",
+  "generated_at": "2026-11-09T15:00:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
   "source": "Curated from organizer, venue and published event calendars; not exhaustive",
-  "note": "All pickup windows and premium ratings are estimates, not live Uber Black demand. Confirm event details and pickup access with organizer. CityCenter road closures November 14 2–9 PM.",
+  "note": "Curated from official organizers and dated local gala guides. Event hours are marked unverified where necessary. Pickup windows and Black SUV ratings are estimates, not live surge or bookings.",
   "events": [
     {
       "day": "Mon",
@@ -17,6 +17,19 @@
       "profile": "Healthcare and policy executives; Capitol security/pickup restrictions possible",
       "tag": "VIP gala",
       "source": "https://ctel.org/gala/"
+    },
+    {
+      "day": "Mon",
+      "date": "2026-11-09",
+      "time": "6–10 PM (ceremony concludes 9:30 PM)",
+      "name": "B20 USA Summit — Opening Ceremony and Concert",
+      "address": "The Anthem, 901 Wharf St SW, Washington, DC 20024",
+      "pickup": "9:15–10:30 PM (estimated)",
+      "rating": 5,
+      "type": "conference",
+      "profile": "International CEOs, diplomats and government leaders",
+      "tag": "Global executive summit",
+      "source": "https://www.uschamber.com/major-initiative/b20-summit-2026/agenda"
     },
     {
       "day": "Tue",
@@ -43,6 +56,19 @@
       "profile": "International journalism leaders and honorees",
       "tag": "Awards dinner",
       "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
+    },
+    {
+      "day": "Tue",
+      "date": "2026-11-10",
+      "time": "7 AM–8 PM programming and networking",
+      "name": "B20 USA Summit — Executive Plenary and Networking",
+      "address": "The Anthem and District Pier, 901 Wharf St SW, Washington, DC 20024",
+      "pickup": "12:30–2 PM and 5:30–8:30 PM (estimated)",
+      "rating": 5,
+      "type": "conference",
+      "profile": "Global executives and international delegations",
+      "tag": "Global executive summit",
+      "source": "https://www.uschamber.com/major-initiative/b20-summit-2026/agenda"
     },
     {
       "day": "Wed",
@@ -84,6 +110,19 @@
       "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
     },
     {
+      "day": "Wed",
+      "date": "2026-11-11",
+      "time": "7 AM–1:30 PM programming",
+      "name": "B20 USA Summit — Closing Day",
+      "address": "The Anthem and District Pier, 901 Wharf St SW, Washington, DC 20024",
+      "pickup": "12:15–3 PM (estimated)",
+      "rating": 5,
+      "type": "conference",
+      "profile": "International delegates departing hotels and airport transfers",
+      "tag": "Global executive summit",
+      "source": "https://www.uschamber.com/major-initiative/b20-summit-2026/agenda"
+    },
+    {
       "day": "Thu",
       "date": "2026-11-12",
       "time": "Conference day; exact hours unconfirmed",
@@ -107,6 +146,45 @@
       "type": "gala",
       "profile": "High-end fundraising dinner guests",
       "tag": "Luxury dinner",
+      "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
+    },
+    {
+      "day": "Thu",
+      "date": "2026-11-12",
+      "time": "Evening; exact hours not verified",
+      "name": "DC Central Kitchen Capital Food Fight",
+      "address": "The Anthem, 901 Wharf St SW, Washington, DC 20024",
+      "pickup": "9–11 PM (estimated; confirm schedule)",
+      "rating": 5,
+      "type": "gala",
+      "profile": "Fundraising food event with corporate sponsors and celebrity chefs",
+      "tag": "Fundraiser / VIP",
+      "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
+    },
+    {
+      "day": "Thu",
+      "date": "2026-11-12",
+      "time": "Evening; exact hours not verified",
+      "name": "NAHMA Educational Foundation Inspire Gala",
+      "address": "Sequoia, 3000 K St NW, Washington, DC 20007",
+      "pickup": "9–11 PM (estimated; confirm schedule)",
+      "rating": 5,
+      "type": "gala",
+      "profile": "Awards dinner, sponsors and foundation donors",
+      "tag": "Waterfront gala",
+      "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
+    },
+    {
+      "day": "Thu",
+      "date": "2026-11-12",
+      "time": "6 PM start",
+      "name": "National Press Club Fourth Estate Award Gala",
+      "address": "National Press Club, 529 14th St NW, Washington, DC 20045",
+      "pickup": "8:30–10:30 PM (estimated)",
+      "rating": 5,
+      "type": "gala",
+      "profile": "Media executives, honorees and invited guests",
+      "tag": "Awards gala",
       "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
     },
     {
