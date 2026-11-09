@@ -96,7 +96,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 (() => {
   const cfg=window.APP_CONFIG||{dataUrl:"./events.json",refreshMinutes:15};
   const order=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-  let S={data:null,day:null,premium:false,type:"all",mode:"events"};
+  let S={data:null,day:"all",premium:false,type:"all",mode:"events"};
   const todayISO=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date()).filter(x=>x.type!=="literal").map(x=>[x.type,x.value]));return `${p.year}-${p.month}-${p.day}`;};
 
   const $=id=>document.getElementById(id);
@@ -125,8 +125,9 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
   function renderDays(){
     const ds=groupDays(available());
-    if(!S.day || !ds.some(x=>x.day===S.day)) S.day=ds.find(x=>x.date===todayISO())?.day || ds[0]?.day || null;
+    if(!S.day || (S.day!=="all" && !ds.some(x=>x.day===S.day))) S.day="all";
     $("days").innerHTML="";
+    if(S.mode==="events"){const all=document.createElement("button");all.className="day"+(S.day==="all"?" active":"");all.textContent="All week";all.onclick=()=>{S.day="all";render();};$("days").appendChild(all);}
     ds.forEach(x=>{
       const l=dayLabel(x.date);
       const b=document.createElement("button");
@@ -151,7 +152,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
 
     const base=available();
     const rows=base.filter(e =>
-      e.day===S.day &&
+      (S.day==="all" || e.day===S.day) &&
       (!S.premium || Number(e.rating)===5) &&
       (S.mode==="airports" || S.type==="all" || e.type===S.type)
     );
@@ -159,14 +160,14 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
     const date=groupDays(base).find(x=>x.day===S.day)?.date;
     $("content").innerHTML="";
 
-    if(!date){
+    if(!date && S.day!=="all"){
       $("content").innerHTML='<div class="empty">No opportunities available.</div>';
       return;
     }
 
     const sec=document.createElement("div");
     sec.className="section";
-    sec.textContent=dayLabel(date).full;
+    sec.textContent=S.day==="all"?"All events this week":dayLabel(date).full;
     $("content").appendChild(sec);
 
     if(!rows.length){
@@ -182,7 +183,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
       c.className="card";
       c.innerHTML=`
         <div>
-          <div class="time">${esc(e.time)}</div>
+          <div class="time">${S.day==="all" ? esc(dayLabel(e.date).full)+" • " : ""}${esc(e.time)}</div>
           <div class="name">${esc(e.name)}</div>
           <div class="place">${esc(e.address)}</div>
           <div class="tag">${esc(e.tag||e.type)}${e.status && e.status!=="onsale" ? " • "+esc(e.status) : ""}</div>
@@ -217,15 +218,15 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
       }
       if(!data) throw new Error("No schedule source available");
       S.data=data;
-      S.day=null;
+      S.day="all";
       render();
     }catch(err){
       $("weekMeta").textContent="Could not load the latest schedule. Check connection and try Refresh.";
     }
   }
 
-  $("eventsTab").onclick=()=>{S.mode="events";S.day=null;render();};
-  $("airportsTab").onclick=()=>{S.mode="airports";S.day=null;render();};
+  $("eventsTab").onclick=()=>{S.mode="events";S.day="all";render();};
+  $("airportsTab").onclick=()=>{S.mode="airports";S.day="all";render();};
   $("premiumBtn").onclick=()=>{S.premium=!S.premium;render();};
   $("typeSel").onchange=()=>{S.type=$("typeSel").value;render();};
   $("refreshBtn").onclick=async()=>{
