@@ -78,7 +78,7 @@
       "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
       "pickup": "8:45–9:30 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "College basketball attendees",
       "tag": "College basketball",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -143,7 +143,7 @@
       "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
       "pickup": "7:45–8:30 PM (estimated)",
       "rating": 2,
-      "type": "sports",
+      "type": "sport",
       "profile": "College basketball attendees",
       "tag": "College basketball",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -156,7 +156,7 @@
       "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
       "pickup": "8:45–9:30 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "Soccer spectators",
       "tag": "Soccer",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -234,7 +234,7 @@
       "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
       "pickup": "9:15–10:15 PM (estimated)",
       "rating": 5,
-      "type": "sports",
+      "type": "sport",
       "profile": "NBA courtside and suite guests",
       "tag": "NBA home game",
       "source": "https://www.capitalonearena.com/events"
@@ -299,7 +299,7 @@
       "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
       "pickup": "8:45–9:30 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "College basketball attendees",
       "tag": "College basketball",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -364,7 +364,7 @@
       "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
       "pickup": "1:45–2:45 PM (estimated)",
       "rating": 5,
-      "type": "sports",
+      "type": "sport",
       "profile": "Playoff soccer fans, suite and club guests",
       "tag": "NWSL playoff",
       "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
@@ -377,7 +377,7 @@
       "address": "SECU Stadium, 90 Stadium Dr, College Park, MD 20742",
       "pickup": "Postgame; time TBD",
       "rating": 4,
-      "type": "sports",
+      "type": "sport",
       "profile": "College football spectators and alumni",
       "tag": "College football",
       "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
@@ -390,7 +390,7 @@
       "address": "Greene Stadium, 2400 6th St NW, Washington, DC 20059",
       "pickup": "3:30–4:30 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "College football spectators",
       "tag": "College football",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -403,7 +403,7 @@
       "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
       "pickup": "3–4 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "Military academy supporters",
       "tag": "College football",
       "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
@@ -416,7 +416,7 @@
       "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
       "pickup": "9:15–10 PM (estimated)",
       "rating": 5,
-      "type": "sports",
+      "type": "sport",
       "profile": "NHL premium seating and suite guests",
       "tag": "NHL home game",
       "source": "https://www.capitalonearena.com/events"
@@ -429,7 +429,7 @@
       "address": "CareFirst Arena, 1100 Oak Dr SE, Washington, DC 20032",
       "pickup": "9–9:45 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "G League basketball attendees",
       "tag": "Basketball",
       "source": "https://americanarenas.com/city/dc-events/sports/november/"
@@ -455,7 +455,7 @@
       "address": "Xfinity Center, 8500 Paint Branch Dr, College Park, MD 20742",
       "pickup": "2:45–3:30 PM (estimated)",
       "rating": 3,
-      "type": "sports",
+      "type": "sport",
       "profile": "College basketball spectators",
       "tag": "College basketball",
       "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
@@ -468,7 +468,7 @@
       "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
       "pickup": "9:15–10:15 PM (estimated)",
       "rating": 5,
-      "type": "sports",
+      "type": "sport",
       "profile": "NBA premium seating and suite guests",
       "tag": "NBA home game",
       "source": "https://www.capitalonearena.com/events"
