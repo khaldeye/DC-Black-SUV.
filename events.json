@@ -1,6 +1,6 @@
 {
   "week_label": "Nov 9 – Nov 15, 2026",
-  "generated_at": "2026-11-09T15:00:00-05:00",
+  "generated_at": "2026-11-09T15:05:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
   "source": "Curated from organizer, venue and published event calendars; not exhaustive",
   "note": "Curated from official organizers and dated local gala guides. Event hours are marked unverified where necessary. Pickup windows and Black SUV ratings are estimates, not live surge or bookings.",
@@ -71,6 +71,19 @@
       "source": "https://www.uschamber.com/major-initiative/b20-summit-2026/agenda"
     },
     {
+      "day": "Tue",
+      "date": "2026-11-10",
+      "time": "7 PM",
+      "name": "George Washington vs Elon — Men's Basketball",
+      "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
+      "pickup": "8:45–9:30 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "College basketball attendees",
+      "tag": "College basketball",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
+    },
+    {
       "day": "Wed",
       "date": "2026-11-11",
       "time": "8 AM–4 PM",
@@ -121,6 +134,32 @@
       "profile": "International delegates departing hotels and airport transfers",
       "tag": "Global executive summit",
       "source": "https://www.uschamber.com/major-initiative/b20-summit-2026/agenda"
+    },
+    {
+      "day": "Wed",
+      "date": "2026-11-11",
+      "time": "6 PM",
+      "name": "George Washington vs Georgetown — Women's Basketball",
+      "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
+      "pickup": "7:45–8:30 PM (estimated)",
+      "rating": 2,
+      "type": "sports",
+      "profile": "College basketball attendees",
+      "tag": "College basketball",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
+    },
+    {
+      "day": "Wed",
+      "date": "2026-11-11",
+      "time": "7 PM",
+      "name": "DC Power FC vs Brooklyn FC",
+      "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
+      "pickup": "8:45–9:30 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "Soccer spectators",
+      "tag": "Soccer",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
     },
     {
       "day": "Thu",
@@ -188,6 +227,19 @@
       "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
     },
     {
+      "day": "Thu",
+      "date": "2026-11-12",
+      "time": "7 PM",
+      "name": "Washington Wizards vs Detroit Pistons",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "9:15–10:15 PM (estimated)",
+      "rating": 5,
+      "type": "sports",
+      "profile": "NBA courtside and suite guests",
+      "tag": "NBA home game",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
       "day": "Fri",
       "date": "2026-11-13",
       "time": "6–11:30 PM",
@@ -238,6 +290,19 @@
       "profile": "Luxury charity dining guests",
       "tag": "Luxury dinner",
       "source": "https://georgetowner.com/articles/2026/11/05/dc-gala-guide-fall-2026/"
+    },
+    {
+      "day": "Fri",
+      "date": "2026-11-13",
+      "time": "7 PM",
+      "name": "George Washington vs Harvard — Men's Basketball",
+      "address": "Charles E. Smith Center, 600 22nd St NW, Washington, DC 20052",
+      "pickup": "8:45–9:30 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "College basketball attendees",
+      "tag": "College basketball",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
     },
     {
       "day": "Sat",
@@ -292,6 +357,84 @@
       "source": "https://rrbitc.com/events/constellation-executive-energy-forum-2026/"
     },
     {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "12 PM",
+      "name": "Washington Spirit vs Utah Royals — NWSL Semifinal",
+      "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
+      "pickup": "1:45–2:45 PM (estimated)",
+      "rating": 5,
+      "type": "sports",
+      "profile": "Playoff soccer fans, suite and club guests",
+      "tag": "NWSL playoff",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "Kickoff time to verify",
+      "name": "Maryland Terrapins vs Wisconsin Badgers — Football",
+      "address": "SECU Stadium, 90 Stadium Dr, College Park, MD 20742",
+      "pickup": "Postgame; time TBD",
+      "rating": 4,
+      "type": "sports",
+      "profile": "College football spectators and alumni",
+      "tag": "College football",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "1 PM",
+      "name": "Howard Bison vs Delaware State — Football",
+      "address": "Greene Stadium, 2400 6th St NW, Washington, DC 20059",
+      "pickup": "3:30–4:30 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "College football spectators",
+      "tag": "College football",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "1 PM",
+      "name": "Secretaries' Cup — Coast Guard vs Merchant Marine",
+      "address": "Audi Field, 100 Potomac Ave SW, Washington, DC 20024",
+      "pickup": "3–4 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "Military academy supporters",
+      "tag": "College football",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "7 PM",
+      "name": "Washington Capitals vs New Jersey Devils",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "9:15–10 PM (estimated)",
+      "rating": 5,
+      "type": "sports",
+      "profile": "NHL premium seating and suite guests",
+      "tag": "NHL home game",
+      "source": "https://www.capitalonearena.com/events"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-14",
+      "time": "7 PM",
+      "name": "Capital City Go-Go vs Raptors 905",
+      "address": "CareFirst Arena, 1100 Oak Dr SE, Washington, DC 20032",
+      "pickup": "9–9:45 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "G League basketball attendees",
+      "tag": "Basketball",
+      "source": "https://americanarenas.com/city/dc-events/sports/november/"
+    },
+    {
       "day": "Sun",
       "date": "2026-11-15",
       "time": "Until 5 PM",
@@ -303,6 +446,32 @@
       "profile": "Energy business travelers and departing delegates",
       "tag": "Executive forum",
       "source": "https://rrbitc.com/events/constellation-executive-energy-forum-2026/"
+    },
+    {
+      "day": "Sun",
+      "date": "2026-11-15",
+      "time": "1 PM",
+      "name": "Maryland Women's Basketball vs Columbia",
+      "address": "Xfinity Center, 8500 Paint Branch Dr, College Park, MD 20742",
+      "pickup": "2:45–3:30 PM (estimated)",
+      "rating": 3,
+      "type": "sports",
+      "profile": "College basketball spectators",
+      "tag": "College basketball",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nE&date=thisweekend"
+    },
+    {
+      "day": "Sun",
+      "date": "2026-11-15",
+      "time": "7 PM",
+      "name": "Washington Wizards vs Houston Rockets",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC 20004",
+      "pickup": "9:15–10:15 PM (estimated)",
+      "rating": 5,
+      "type": "sports",
+      "profile": "NBA premium seating and suite guests",
+      "tag": "NBA home game",
+      "source": "https://www.capitalonearena.com/events"
     }
   ]
 }
