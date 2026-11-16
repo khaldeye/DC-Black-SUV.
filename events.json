@@ -1,6 +1,6 @@
 {
   "week_label": "Nov 16 – Nov 22, 2026",
-  "generated_at": "2026-11-16T08:35:00-05:00",
+  "generated_at": "2026-11-16T09:10:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
   "source": "Curated from official organizer calendars and dated local listings; not exhaustive",
   "note": "Pickup windows and SUV ratings are estimates, not live demand. Unverified times and locations are labeled; verify with organizer before positioning. Private events and traffic restrictions may not be publicly listed.",
@@ -296,13 +296,13 @@
       "date": "2026-11-21",
       "time": "7–11 PM",
       "name": "Transformer 22nd Annual Benefit Art Auction & Gala",
-      "address": "The LINE DC, 1770 Euclid St NW, Washington, DC 20009",
+      "address": "The LINE DC, 2468 Champlain St NW, Washington, DC 20009 (organizer-listed gala address)",
       "pickup": "10:15–11:30 PM (estimated)",
       "rating": 5,
       "type": "gala",
       "profile": "Art collectors, donors, diplomats and sponsors",
       "tag": "Art gala",
-      "source": "https://www.transformerdc.org/events/the-kaleidoscope-effect-transformers-22nd-annual-auction-exhibition-benefit-gala"
+      "source": "https://www.transformerdc.org/the-kaleidoscope-effect"
     },
     {
       "day": "Sat",
@@ -316,6 +316,19 @@
       "profile": "Global health delegates and executives",
       "tag": "Major conference",
       "source": "https://www.astmh.org/annual-meeting/housing-and-travel"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-21",
+      "time": "5:30–6:45 PM cocktails; 6:45–9:30 PM dinner; after-party from 9:30 PM",
+      "name": "St. John's College High School 175th Anniversary Black-Tie Celebration",
+      "address": "The Ritz-Carlton Washington, DC, 1150 22nd St NW, Washington, DC 20037",
+      "pickup": "9:30–11:30 PM (estimated; after-party end not confirmed)",
+      "rating": 5,
+      "type": "gala",
+      "profile": "Alumni, benefactors, school leadership, formal black-tie guests",
+      "tag": "Black-tie hotel gala",
+      "source": "https://embed-rech-01.dialog.cm/stjohnschs/docs/scarlet_gret_fall_2026"
     },
     {
       "day": "Sun",
