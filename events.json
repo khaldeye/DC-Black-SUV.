@@ -1,6 +1,6 @@
 {
   "week_label": "Nov 16 – Nov 22, 2026",
-  "generated_at": "2026-11-16T09:10:00-05:00",
+  "generated_at": "2026-11-16T09:35:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
   "source": "Curated from official organizer calendars and dated local listings; not exhaustive",
   "note": "Pickup windows and SUV ratings are estimates, not live demand. Unverified times and locations are labeled; verify with organizer before positioning. Private events and traffic restrictions may not be publicly listed.",
@@ -329,6 +329,19 @@
       "profile": "Alumni, benefactors, school leadership, formal black-tie guests",
       "tag": "Black-tie hotel gala",
       "source": "https://embed-rech-01.dialog.cm/stjohnschs/docs/scarlet_gret_fall_2026"
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-21",
+      "time": "6 PM hospitality suites; 8–11 PM black-tie gala",
+      "name": "Kappa Psi Chapter Centennial Black-Tie Gala",
+      "address": "The Westin DC Downtown, 999 9th St NW, Washington, DC 20001",
+      "pickup": "10:45–11:45 PM (estimated)",
+      "rating": 5,
+      "type": "gala",
+      "profile": "Omega Psi Phi alumni, professional leaders, sponsors and formal gala guests",
+      "tag": "Black-tie hotel gala — social event listing",
+      "source": "https://somo.social/e/kappa-psi-chapter-of-omega-psi-phi-fraternity-inc-2026-11-21"
     },
     {
       "day": "Sun",
