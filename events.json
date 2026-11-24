@@ -3,7 +3,7 @@
   "generated_at": "2026-11-23T20:03:00-05:00",
   "region": "Washington, DC • Maryland • Northern Virginia",
   "source": "Official venue and hotel calendars, ticket listings and dated local publications",
-  "note": "Pickup windows and ratings are estimates. Airport rows are planning advisories, not live flight data. No verified black-tie gala found in this search; private events may be unlisted.",
+  "note": "Black and surge ratings are qualitative estimates, not live Uber data. Airport advisories reflect MWAA forecast peak travel days. Unverified NFL listing removed pending official confirmation.",
   "events": [
     {
       "day": "Mon",
@@ -15,8 +15,10 @@
       "rating": 5,
       "type": "concert",
       "profile": "Soul, R&B; arena premium seating",
-      "tag": "concert",
-      "source": "https://www.capitalonearena.com/events"
+      "tag": "concert • Black 5/5 • Surge 5/5",
+      "source": "https://www.capitalonearena.com/events",
+      "direct_black": 5,
+      "surge_potential": 5
     },
     {
       "day": "Mon",
@@ -28,47 +30,40 @@
       "rating": 3,
       "type": "concert",
       "profile": "Hip-hop and R&B",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
-      "day": "Mon",
-      "date": "2026-11-23",
-      "time": "Time not confirmed",
-      "name": "Commanders vs Cincinnati Bengals",
-      "address": "Northwest Stadium, 1600 FedEx Way, Landover, MD",
-      "pickup": "After game; check kickoff (estimated)",
-      "rating": 5,
-      "type": "sport",
-      "profile": "NFL suite and club guests",
-      "tag": "sport",
-      "source": "https://washingtonian.com/2026/11/23/things-to-do-in-the-dc-area-november-23-29-2026/"
-    },
-    {
-      "day": "Mon",
-      "date": "2026-11-23",
+      "day": "Tue",
+      "date": "2026-11-24",
       "time": "All day; no live flight data",
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "DCA Reagan National Airport, Arlington, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flyreagan.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     },
     {
-      "day": "Mon",
-      "date": "2026-11-23",
+      "day": "Tue",
+      "date": "2026-11-24",
       "time": "All day; no live flight data",
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "IAD Dulles International Airport, Dulles, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flydulles.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     },
     {
       "day": "Tue",
@@ -77,11 +72,13 @@
       "name": "Wizards vs Boston Celtics",
       "address": "Capital One Arena, 601 F St NW, Washington, DC",
       "pickup": "10:15–11:15 PM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "sport",
       "profile": "NBA premium seating",
-      "tag": "sport",
-      "source": "https://www.capitalonearena.com/events"
+      "tag": "sport • Black 3/5 • Surge 4/5",
+      "source": "https://www.capitalonearena.com/events",
+      "direct_black": 3,
+      "surge_potential": 4
     },
     {
       "day": "Tue",
@@ -90,11 +87,13 @@
       "name": "NSO — Dolly Parton's Threads: My Songs in Symphony",
       "address": "The Anthem, 901 Wharf St SW, Washington, DC",
       "pickup": "9:15–10:15 PM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "concert",
       "profile": "Seated orchestral country music",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/venue/172624"
+      "tag": "concert • Black 4/5 • Surge 4/5",
+      "source": "https://www.ticketmaster.com/venue/172624",
+      "direct_black": 4,
+      "surge_potential": 4
     },
     {
       "day": "Tue",
@@ -106,8 +105,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "Indie folk/pop",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -116,11 +117,13 @@
       "name": "Capitals vs Philadelphia Flyers",
       "address": "Capital One Arena, 601 F St NW, Washington, DC",
       "pickup": "9:15–10:15 PM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "sport",
       "profile": "NHL suite guests",
-      "tag": "sport",
-      "source": "https://www.capitalonearena.com/events"
+      "tag": "sport • Black 3/5 • Surge 4/5",
+      "source": "https://www.capitalonearena.com/events",
+      "direct_black": 3,
+      "surge_potential": 4
     },
     {
       "day": "Wed",
@@ -132,8 +135,10 @@
       "rating": 4,
       "type": "concert",
       "profile": "Vietnamese music concert",
-      "tag": "concert",
-      "source": "https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html"
+      "tag": "concert • Black 4/5 • Surge 3/5",
+      "source": "https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html",
+      "direct_black": 4,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -145,8 +150,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "Family theater",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -158,8 +165,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "Rock",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -171,8 +180,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "Alternative rock",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -184,8 +195,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday light attraction",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Wed",
@@ -194,11 +207,13 @@
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "DCA Reagan National Airport, Arlington, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flyreagan.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     },
     {
       "day": "Wed",
@@ -207,11 +222,13 @@
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "IAD Dulles International Airport, Dulles, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flydulles.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     },
     {
       "day": "Thu",
@@ -223,8 +240,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "Luxury three-course dinner; live jazz",
-      "tag": "Luxury holiday dining",
-      "source": "https://event.marriott.com/wasgo-the-ritz-carlton-georgetown-washington-d-c/events/washington/thanksgiving-dinner-12999829"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://event.marriott.com/wasgo-the-ritz-carlton-georgetown-washington-d-c/events/washington/thanksgiving-dinner-12999829",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -236,8 +255,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "$135 adult buffet; live music",
-      "tag": "Luxury holiday dining",
-      "source": "https://event.marriott.com/waspc-the-ritz-carlton-pentagon-city/events/arlington/thanksgiving-brunch-13126912"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://event.marriott.com/waspc-the-ritz-carlton-pentagon-city/events/arlington/thanksgiving-brunch-13126912",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -249,8 +270,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "$185 adult brunch",
-      "tag": "Luxury holiday dining",
-      "source": "https://thelocalgirl.com/fairfax/restaurants-open-thanksgiving-northern-virginia-2026/"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://thelocalgirl.com/fairfax/restaurants-open-thanksgiving-northern-virginia-2026/",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -262,8 +285,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "$180 adult luxury dining",
-      "tag": "Luxury holiday dining",
-      "source": "https://washington.org/event/thanksgiving-day-brunch"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://washington.org/event/thanksgiving-day-brunch",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -275,8 +300,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "Luxury hotel dining",
-      "tag": "Luxury holiday dining",
-      "source": "https://washington.intercontinental.com/events-calendar/"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://washington.intercontinental.com/events-calendar/",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -288,8 +315,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "$185 adult prix fixe",
-      "tag": "Luxury holiday dining",
-      "source": "https://www.rosewoodhotels.com/en/washington-dc/experiences/calendar/thanksgiving-cut"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://www.rosewoodhotels.com/en/washington-dc/experiences/calendar/thanksgiving-cut",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -301,8 +330,10 @@
       "rating": 5,
       "type": "dinner",
       "profile": "Luxury hotel buffet",
-      "tag": "Luxury holiday dining",
-      "source": "https://www.fairmont.com/en/hotels/washington-dc/fairmont-washington/special-events/Festive-Season-at-the-Fairmont-Washington-D-C%2C-Georgetown.html"
+      "tag": "Luxury holiday dining • Black 5/5 • Surge 2/5",
+      "source": "https://www.fairmont.com/en/hotels/washington-dc/fairmont-washington/special-events/Festive-Season-at-the-Fairmont-Washington-D-C%2C-Georgetown.html",
+      "direct_black": 5,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -314,8 +345,10 @@
       "rating": 4,
       "type": "dinner",
       "profile": "Rooftop holiday buffet",
-      "tag": "Luxury holiday dining",
-      "source": "https://thelocalgirl.com/fairfax/restaurants-open-thanksgiving-northern-virginia-2026/"
+      "tag": "Luxury holiday dining • Black 4/5 • Surge 2/5",
+      "source": "https://thelocalgirl.com/fairfax/restaurants-open-thanksgiving-northern-virginia-2026/",
+      "direct_black": 4,
+      "surge_potential": 2
     },
     {
       "day": "Thu",
@@ -327,8 +360,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Charity race; possible traffic restrictions",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Fri",
@@ -337,11 +372,13 @@
       "name": "Capitals vs Florida Panthers",
       "address": "Capital One Arena, 601 F St NW, Washington, DC",
       "pickup": "5:15–6:15 PM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "sport",
       "profile": "NHL premium seating",
-      "tag": "sport",
-      "source": "https://www.capitalonearena.com/events"
+      "tag": "sport • Black 3/5 • Surge 4/5",
+      "source": "https://www.capitalonearena.com/events",
+      "direct_black": 3,
+      "surge_potential": 4
     },
     {
       "day": "Fri",
@@ -350,11 +387,13 @@
       "name": "Victoria Monét — Frequency of Love Tour",
       "address": "The Anthem, 901 Wharf St SW, Washington, DC",
       "pickup": "11 PM–12:30 AM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "concert",
       "profile": "Contemporary R&B",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/venue/172624"
+      "tag": "concert • Black 3/5 • Surge 4/5",
+      "source": "https://theanthemdc.com/event/victoria-monet-frequency-of-love-tour/",
+      "direct_black": 3,
+      "surge_potential": 4
     },
     {
       "day": "Fri",
@@ -366,8 +405,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "Dance party",
-      "tag": "concert",
-      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://www.ticketmaster.com/discover/washington-dc?categoryId=KZFzniwnSyZfZ7v7nJ&date=thismonth",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Fri",
@@ -379,8 +420,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday family crowds",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Fri",
@@ -392,8 +435,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday light attraction",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Sat",
@@ -402,11 +447,13 @@
       "name": "Donnell Rawlings — Love, Lies & Therapy",
       "address": "MGM National Harbor, 101 MGM National Ave, Oxon Hill, MD",
       "pickup": "9:30–10:30 PM (estimated)",
-      "rating": 5,
+      "rating": 4,
       "type": "concert",
       "profile": "Stand-up comedy",
-      "tag": "concert",
-      "source": "https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html"
+      "tag": "concert • Black 4/5 • Surge 3/5",
+      "source": "https://mgmnationalharbor.mgmresorts.com/en/entertainment/the-theater.html",
+      "direct_black": 4,
+      "surge_potential": 3
     },
     {
       "day": "Sat",
@@ -415,11 +462,13 @@
       "name": "Washington Ballet — The Nutcracker",
       "address": "Warner Theatre, 513 13th St NW, Washington, DC",
       "pickup": "After performances; check schedule (estimated)",
-      "rating": 4,
+      "rating": 3,
       "type": "concert",
       "profile": "Ballet and family audiences",
-      "tag": "concert",
-      "source": "https://washingtonian.com/2026/11/23/things-to-do-in-the-dc-area-november-23-29-2026/"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://washingtonian.com/2026/11/23/things-to-do-in-the-dc-area-november-23-29-2026/",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Sat",
@@ -431,8 +480,10 @@
       "rating": 3,
       "type": "concert",
       "profile": "1990s cover band",
-      "tag": "concert",
-      "source": "https://washingtonian.com/2026/11/23/things-to-do-in-the-dc-area-november-23-29-2026/"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://washingtonian.com/2026/11/23/things-to-do-in-the-dc-area-november-23-29-2026/",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Sat",
@@ -444,8 +495,25 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday light attraction",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
+    },
+    {
+      "day": "Sat",
+      "date": "2026-11-28",
+      "time": "5 PM",
+      "name": "Wizards vs Orlando Magic",
+      "address": "Capital One Arena, 601 F St NW, Washington, DC",
+      "pickup": "7:15–8:15 PM (estimated)",
+      "rating": 4,
+      "type": "sport",
+      "profile": "NBA premium seating",
+      "tag": "sport • Black 3/5 • Surge 4/5",
+      "source": "https://www.capitalonearena.com/events",
+      "direct_black": 3,
+      "surge_potential": 4
     },
     {
       "day": "Sun",
@@ -454,11 +522,13 @@
       "name": "Washington Ballet — The Nutcracker",
       "address": "Warner Theatre, 513 13th St NW, Washington, DC",
       "pickup": "After performances; check schedule (estimated)",
-      "rating": 4,
+      "rating": 3,
       "type": "concert",
       "profile": "Ballet and family audiences",
-      "tag": "concert",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "concert • Black 3/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 3,
+      "surge_potential": 3
     },
     {
       "day": "Sun",
@@ -470,8 +540,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday family crowds",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Sun",
@@ -483,8 +555,10 @@
       "rating": 3,
       "type": "festival",
       "profile": "Holiday light attraction",
-      "tag": "festival",
-      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/"
+      "tag": "festival • Black 2/5 • Surge 3/5",
+      "source": "https://dcspot.com/things-to-do-washington-dc-this-week/",
+      "direct_black": 2,
+      "surge_potential": 3
     },
     {
       "day": "Sun",
@@ -493,11 +567,13 @@
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "DCA Reagan National Airport, Arlington, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flyreagan.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     },
     {
       "day": "Sun",
@@ -506,11 +582,13 @@
       "name": "Thanksgiving airport travel — planning advisory",
       "address": "IAD Dulles International Airport, Dulles, VA",
       "pickup": "Monitor live arrivals and permitted pickup areas (estimated)",
-      "rating": 4,
+      "rating": 5,
       "type": "airport",
-      "profile": "Holiday travel planning estimate; not verified surge",
-      "tag": "Planning advisory",
-      "source": "https://www.flydulles.com/"
+      "profile": "MWAA forecast peak travel day; arrival timing and surge unconfirmed",
+      "tag": "Planning advisory • Black 4/5 • Surge 5/5",
+      "source": "https://ebs.publicnow.com/view/F09CA86CBD324475FCBA66E5CA14A96AF4F69EB3",
+      "direct_black": 4,
+      "surge_potential": 5
     }
   ]
 }
