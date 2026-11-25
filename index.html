@@ -54,6 +54,21 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
   .headerTitle{font-size:22px}
 }
 </style>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+window.OneSignalDeferred=window.OneSignalDeferred||[];
+window.OneSignalDeferred.push(async function(OneSignal){
+try {
+await OneSignal.init({appId:"0deccd94-b7fe-42fe-a4c9-50505b9c94d8",serviceWorkerPath:"push/OneSignalSDKWorker.js",serviceWorkerParam:{scope:"/DC-Black-SUV./push/"}});
+const b=document.getElementById("pushBtn");
+const sync=()=>{b.disabled=false;b.textContent=OneSignal.User.PushSubscription.optedIn?"Disable pickup alerts":"Enable pickup alerts";};
+sync();
+OneSignal.User.PushSubscription.addEventListener("change",sync);
+b.onclick=async()=>{try{if(OneSignal.User.PushSubscription.optedIn) await OneSignal.User.PushSubscription.optOut();else {await OneSignal.Notifications.requestPermission();if(OneSignal.Notifications.permission) await OneSignal.User.PushSubscription.optIn();}sync();}catch(e){document.getElementById("pushStatus").textContent="Could not change notification permission. Check browser settings.";}};
+document.getElementById("pushStatus").textContent="On iPhone, install on Home Screen before enabling. Scheduled delivery requires backend setup.";
+}catch(e){document.getElementById("pushStatus").textContent="Push setup unavailable; check OneSignal web configuration.";}
+});
+</script>
 </head>
 <body>
 <div class="app">
@@ -87,7 +102,7 @@ linear-gradient(135deg,transparent 0 48%,#c5d8e5 48% 51%,transparent 51%)}
       </select>
     </div>
 
-    <div id="weekMeta" class="meta">Loading…</div>
+    <button id="pushBtn" class="filter" disabled>Enable pickup alerts</button><div id="pushStatus" class="meta" role="status">Loading notification setup…</div><div id="weekMeta" class="meta">Loading…</div>
     <div id="dataStatus" class="meta" role="status" aria-live="polite">Checking this week’s events…</div>
     <div id="content"></div>
   </div>
